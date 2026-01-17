@@ -1,0 +1,50 @@
+:root {
+  --neki-blue: #0066CC;
+  --neki-dark-blue: #004C99;
+  --neki-light-blue: #3385D6;
+  
+  --neki-orange: #FF6B00; 
+  
+  --neki-dark: #1a1a1a;
+  --neki-gray: #333333;
+  --neki-light-gray: #f5f5f5;
+  --neki-white: #ffffff;
+  
+  --success: #28a745;
+  --danger: #dc3545;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--neki-dark);
+  background-color: var(--neki-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}

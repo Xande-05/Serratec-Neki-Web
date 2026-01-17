@@ -1,0 +1,168 @@
+.home-container {
+  min-height: 100vh;
+  background-color: var(--neki-light-gray);
+}
+
+.home-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.home-header h1 {
+  color: var(--neki-dark);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.home-header p {
+  color: var(--neki-gray);
+  font-size: 16px;
+}
+
+.btn-adicionar {
+  background: var(--neki-blue);
+  color: var(--neki-white);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-adicionar:hover {
+  background: var(--neki-dark-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--neki-light-gray);
+  border-top: 4px solid var(--neki-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: var(--neki-gray);
+  font-size: 16px;
+}
+
+.erro-message {
+  background-color: #fee;
+  color: var(--danger);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid var(--danger);
+}
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.vazio-icon {
+  font-size: 80px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.vazio h2 {
+  color: var(--neki-dark);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.vazio p {
+  color: var(--neki-gray);
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.btn-criar-primeiro {
+  background: var(--neki-orange);
+  color: var(--neki-white);
+  padding: 12px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-criar-primeiro:hover {
+  background: #CC5500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-adicionar {
+    width: 100%;
+  }
+
+  .eventos-grid {
+    grid-template-columns: 1fr;
+  }
+}
