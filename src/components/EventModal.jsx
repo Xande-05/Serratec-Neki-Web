@@ -28,16 +28,31 @@ function EventModal({ evento, onFechar, onSalvar, adminId }) {
   }, [evento]);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    setErro('');
-  };
+  const { name, value } = e.target;
+
+  if (name === 'data') {
+    const ano = value.substring(0, 4);
+  
+    if (ano.length > 4) {
+    }
+  }
+
+  setFormData({
+    ...formData,
+    [name]: value,
+  });
+  setErro('');
+};
 
   const validarFormulario = () => {
     if (!formData.nome || !formData.data || !formData.localizacao) {
       setErro('Nome, data e localização são obrigatórios!');
+      return false;
+    }
+
+    const ano = new Date(formData.data).getFullYear();
+    if (ano < 1900 || ano > 2100) {
+      setErro('Por favor, insira um ano válido (entre 1900 e 2100).');
       return false;
     }
     return true;
@@ -69,7 +84,7 @@ function EventModal({ evento, onFechar, onSalvar, adminId }) {
           localizacao: formData.localizacao,
         });
       } else {
-        await criarEvento(eventoData, adminId);
+        await criarEvento(eventoData);
       }
 
       onSalvar();
@@ -116,6 +131,8 @@ function EventModal({ evento, onFechar, onSalvar, adminId }) {
               name="data"
               value={formData.data}
               onChange={handleChange}
+              min="1900-01-01T00:00"
+              max="9999-12-31T23:59"
               required
             />
           </div>

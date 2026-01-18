@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { fazerLogin } from '../service/api';
@@ -13,6 +13,17 @@ function Login() {
 
   const navigate = useNavigate();
   const { login } = useAuth();
+
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('savedEmail');
+    const savedPassword = localStorage.getItem('savedPassword');
+
+    if (savedEmail && savedPassword) {
+      setEmail(savedEmail);
+      setSenha(savedPassword);
+      setSalvarSenha(true);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

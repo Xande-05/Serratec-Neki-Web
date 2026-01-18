@@ -13,6 +13,7 @@ function Home() {
   const [erro, setErro] = useState('');
   const [modalAberto, setModalAberto] = useState(false);
   const [eventoEditando, setEventoEditando] = useState(null);
+  const [termoBusca, setTermoBusca] = useState('');
 
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Home() {
     setErro('');
     
     try {
-      const data = await listarEventos(user.id);
+      const data = await listarEventos();
       setEventos(data);
     } catch (error) {
       setErro('Erro ao carregar eventos');
@@ -56,6 +57,7 @@ function Home() {
 
   const handleSalvarEvento = () => {
     carregarEventos();
+    setTermoBusca('');
     handleFecharModal();
   };
 
@@ -67,11 +69,16 @@ function Home() {
     try {
       await deletarEvento(id);
       carregarEventos();
+      setTermoBusca('');
     } catch (error) {
       alert('Erro ao deletar evento');
       console.error(error);
     }
   };
+
+  const eventosFiltrados = eventos.filter(evento =>
+    evento.nome?.toLowerCase().includes(termoBusca.toLowerCase())
+  );
 
   return (
     <div className="home-container">
@@ -83,9 +90,18 @@ function Home() {
             <h1>Meus Eventos</h1>
             <p>Gerencie todos os seus eventos em um só lugar</p>
           </div>
-          <button className="btn-adicionar" onClick={() => handleAbrirModal()}>
-            + Adicionar Evento
-          </button>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Buscar evento por nome..."
+              value={termoBusca}
+              onChange={(e) => setTermoBusca(e.target.value)}
+              className="search-input"
+            />
+            <button className="btn-adicionar" onClick={() => handleAbrirModal()}>
+              + Adicionar Evento
+            </button>
+          </div>
         </div>
 
         {loading && (
@@ -113,16 +129,26 @@ function Home() {
         )}
 
         {!loading && !erro && eventos.length > 0 && (
-          <div className="eventos-grid">
-            {eventos.map((evento) => (
-              <EventCard
-                key={evento.id}
-                evento={evento}
-                onEditar={() => handleAbrirModal(evento)}
-                onDeletar={() => handleDeletarEvento(evento.id)}
-              />
-            ))}
-          </div>
+          <>
+            {eventosFiltrados.length === 0 && termoBusca ? (
+              <div className="vazio">
+                <div className="vazio-icon">🔍</div>
+                <h2>Nenhum evento encontrado</h2>
+                <p>Tente outra palavra-chave.</p>
+              </div>
+            ) : (
+              <div className="eventos-grid">
+                {eventosFiltrados.map((evento) => (
+                  <EventCard
+                    key={evento.id}
+                    evento={evento}
+                    onEditar={() => handleAbrirModal(evento)}
+                    onDeletar={() => handleDeletarEvento(evento.id)}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </main>
 
@@ -131,7 +157,7 @@ function Home() {
           evento={eventoEditando}
           onFechar={handleFecharModal}
           onSalvar={handleSalvarEvento}
-          adminId={user.id}
+          adminId={user?.id}
         />
       )}
     </div>

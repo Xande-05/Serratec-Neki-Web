@@ -185,3 +185,9 @@
     padding: 16px;
   }
 }
+
+.form-hint {
+  color: var(--neki-gray);
+  font-size: 12px;
+  margin-top: 4px;
+}
