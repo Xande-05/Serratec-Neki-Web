@@ -1,38 +1,37 @@
-# Compiled class files
-*.class
-target/
+# Dependências
+node_modules/
+/.pnp
+.pnp.js
 
-# Log files
-*.log
+# Testes
+/coverage
 
-# Eclipse
-.classpath
-.project
-.settings/
+# Produção
+/build
+/dist
 
-# IntelliJ IDEA
-.idea/
-*.iml
-*.iws
+# Diversos
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# NetBeans
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# VS Code
+# Editor
 .vscode/
-
-# Maven
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-
-# H2 Database files
-*.db
-data/
+.idea/
+*.swp
+*.swo
+*~
 
 # OS
-.DS_Store
 Thumbs.db
+.DS_Store
