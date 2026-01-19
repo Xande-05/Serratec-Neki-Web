@@ -84,7 +84,7 @@ function EventModal({ evento, onFechar, onSalvar, adminId }) {
           localizacao: formData.localizacao,
         });
       } else {
-        await criarEvento(eventoData);
+        await criarEvento(eventoData, adminId);
       }
 
       onSalvar();

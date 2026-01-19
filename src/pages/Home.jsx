@@ -35,7 +35,7 @@ function Home() {
     setErro('');
     
     try {
-      const data = await listarEventos();
+      const data = await listarEventos(user.id);
       setEventos(data);
     } catch (error) {
       setErro('Erro ao carregar eventos');
