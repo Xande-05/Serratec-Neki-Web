@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { criarEvento, atualizarEvento } from '../service/api';
 import './EventModal.css';
 
-function EventModal({ evento, onFechar, onSalvar, adminId }) {
+function EventModal({ evento, onFechar, onSalvar }) {
   const [formData, setFormData] = useState({
     nome: '',
     data: '',
@@ -84,7 +84,7 @@ function EventModal({ evento, onFechar, onSalvar, adminId }) {
           localizacao: formData.localizacao,
         });
       } else {
-        await criarEvento(eventoData, adminId);
+        await criarEvento(eventoData );
       }
 
       onSalvar();

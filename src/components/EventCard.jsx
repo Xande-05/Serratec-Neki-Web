@@ -1,4 +1,5 @@
 import './EventCard.css';
+import noImage from '../assets/noImage.jpg';
 
 function EventCard({ evento, onEditar, onDeletar }) {
   
@@ -16,13 +17,14 @@ function EventCard({ evento, onEditar, onDeletar }) {
   return (
     <div className="event-card">
       <div className="event-image">
-        <img 
-          src={evento.imagemUrl || 'https://via.placeholder.com/400x200?text=Sem+Imagem'} 
+        <img
+          src={evento.imagemUrl || noImage}
           alt={evento.nome}
           onError={(e) => {
-            e.target.src = 'https://via.placeholder.com/400x200?text=Imagem+Indisponível';
+            e.target.src = noImage
           }}
         />
+
       </div>
 
       <div className="event-content">

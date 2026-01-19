@@ -34,13 +34,13 @@ export const fazerLogin = async (dados) => {
   return response.data;
 };
 
-export const criarEvento = async (evento, adminId) => {
-  const response = await api.post(`/eventos?adminId=${adminId}`, evento);
+export const criarEvento = async (evento ) => {
+  const response = await api.post('/eventos', evento);
   return response.data;
 };
 
-export const listarEventos = async (adminId) => {
-  const response = await api.get(`/eventos?adminId=${adminId}`);
+export const listarEventos = async () => {
+  const response = await api.get('/eventos');
   return response.data;
 };
 

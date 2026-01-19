@@ -157,7 +157,6 @@ function Home() {
           evento={eventoEditando}
           onFechar={handleFecharModal}
           onSalvar={handleSalvarEvento}
-          adminId={user?.id}
         />
       )}
     </div>
