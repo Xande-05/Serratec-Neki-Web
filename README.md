@@ -127,7 +127,3 @@ Dashboard principal com:
 **Alexandre Lício da Silva Morais**
 
 Desenvolvido como parte do processo seletivo Residência NEKI 2025.
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
